@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beethoven’s Symphony Celebration</title>
+    <style>
+        body {
+            overflow: hidden; /* Ensure no scrollbars due to animations */
+        }
+
+        /* Styling for the title */
+        h1 {
+            font-size: 3em;
+            font-weight: bold;
+            color: #000; /* Neutral start color */
+            text-align: center;
+            cursor: pointer;
+            background-size: 200% 200%;
+            transition: background-position 1.5s ease-in-out, color 0.5s ease, font 0.5s ease;
+            position: relative;
+            z-index: 1000;
+            font-family: 'Georgia', serif; /* Default font */
+        }
+
+        /* Hover: Subtle change to start anticipation */
+        h1:hover {
+            color: #4B0082; /* Royal purple hint on hover */
+        }
+
+        /* On click, the text animates with a smooth, royal transition */
+        h1.active {
+            animation: font-change 4s ease-in-out 2s; /* Delay by 2s, smoother animation */
+        }
+
+        /* Keyframe for font and size change animation (royal style) */
+        @keyframes font-change {
+            0% { font-family: 'Georgia', serif; font-size: 3em; letter-spacing: 0; color: #000; }
+            25% { font-family: 'Times New Roman', serif; font-size: 3.5em; letter-spacing: 2px; color: #4B0082; }
+            50% { font-family: 'Palatino Linotype', serif; font-size: 4em; letter-spacing: 3px; color: gold; }
+            75% { font-family: 'Times New Roman', serif; font-size: 3.5em; letter-spacing: 2px; color: #4B0082; }
+            100% { font-family: 'Georgia', serif; font-size: 3em; letter-spacing: 0; color: #000; }
+        }
+
+        /* Confetti animations */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 20px;
+            background-color: rgba(255, 0, 0, 0.8);
+            animation: fall linear infinite;
+            z-index: 999;
+            transform: rotateZ(15deg);
+            opacity: 1;
+            transition: opacity 2s ease-in-out; /* Fading effect */
+        }
+
+        @keyframes fall {
+            0% { top: -10px; transform: rotateZ(0deg); opacity: 1; }
+            100% { top: 100vh; transform: rotateZ(360deg); opacity: 0; }
+        }
+
+        /* Keyframe animation for the gradient movement */
+        @keyframes gradient-shift {
+            0% { background-position: left center; }
+            50% { background-position: right center; }
+            100% { background-position: left center; }
+        }
+    </style>
+</head>
+<body>
+    <h1 id="title" onclick="playMusic()">Vedant Labs!</h1>
+
+    <div id="confetti-container"></div>
+
+    <audio id="background-music">
+        <source src="beethoven hope this is.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        function playMusic() {
+            var music = document.getElementById('background-music');
+            var title = document.getElementById('title');
+
+            if (music.paused) {
+                music.play();
+                title.classList.add('active'); // Add class to animate font and size
+                startConfettiWithDelay(); // Confetti pops with delay
+            } else {
+                music.pause();
+                title.classList.remove('active'); // Remove the font animation when paused
+            }
+        }
+
+        /* Confetti function with gradual increase and fade out */
+        function startConfettiWithDelay() {
+            setTimeout(startConfetti, 2000); // Delay confetti by 2 seconds
+        }
+
+        function startConfetti() {
+            const confettiContainer = document.getElementById('confetti-container');
+            let confettiCount = 0;
+
+            // Increase confetti over 2 seconds
+            const increaseInterval = setInterval(() => {
+                for (let i = 0; i < 10; i++) { // Generate 10 confetti pieces at a time
+                    createConfettiPiece(confettiContainer);
+                }
+                confettiCount += 10;
+                if (confettiCount >= 50) { // Stop increasing after 2 seconds
+                    clearInterval(increaseInterval);
+                }
+            }, 200); // 10 pieces every 200ms (approx 2 seconds total)
+
+            // Fade out confetti after 5 seconds (2s increase + 3s delay)
+            setTimeout(() => {
+                const confettiPieces = document.querySelectorAll('.confetti');
+                confettiPieces.forEach(piece => {
+                    piece.style.opacity = 0; // Gradually fade out
+                });
+                setTimeout(() => {
+                    confettiContainer.innerHTML = ''; // Remove confetti from DOM after fading
+                }, 2000); // Wait for fade-out to complete before removing
+            }, 5000); // Start fading at 5 seconds
+        }
+
+        function createConfettiPiece(confettiContainer) {
+            let confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            confetti.style.left = `${Math.random() * 100}vw`;
+            confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            confetti.style.animationDuration = `${Math.random() * 3 + 2}s`;
+            confettiContainer.appendChild(confetti);
+        }
+    </script>
+</body>
+</html>

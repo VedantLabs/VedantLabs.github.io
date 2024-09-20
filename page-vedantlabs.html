@@ -1,0 +1,98 @@
+{{!-- page-vedantlabs.hbs --}}
+<h1>{{title}}</h1>
+<div>{{content}}</div>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vedant Labs</title>
+    <link rel="stylesheet" href="css/styleLabs.css" />
+    <link rel="stylesheet" href="css/mediaqueries.css" />
+  </head>
+  <body>
+    <!-- Title Section -->
+    
+    <section id="hero-section">
+      <div class="hero-content">
+        
+        <b href="#" onclick="playMusic()"><h1 class="page-title">Vedant Labs</h1></b>
+
+        <audio id="background-music">
+          <source src="beethoven hope this is.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        
+
+    <script>
+        function playMusic() {
+            var music = document.getElementById('background-music');
+            if (music.paused) {
+                music.play();
+            } else {
+                music.pause();  // Toggle pause if it's playing
+            }
+        }
+    </script>
+
+
+
+      <!--<button onclick="document.getElementById('background-music').play()">Play Music</button>-->
+        <!-- Space for description -->
+        <p class="hero-description">Welcome to Vedant Labs, where innovation meets technology...</p>
+      </div>
+      <div class="hero-image-container">
+        <img
+          src="assets/img/instavedu2.jpg"
+          alt="Vedant Labs Landscape"
+          class="hero-image"
+        />
+      </div>
+    </section>
+    
+
+    <!-- Projects Section -->
+    <section id="projects-section">
+      <h2 class="section-title">Our Projects</h2>
+      <div class="project-grid">
+        <!-- Template for 9 projects in a 3x3 grid -->
+        <!-- Repeat this block for each project -->
+        <div class="project-container">
+          <img src="assets/img/Github Profile pic.jpg" alt="Project 1 Image" class="project-img" />
+          <div class="project-details">
+            <h3>Project 1</h3>
+            <p>This changed my entire life, literally like my gender, my identity and prounouns, all of it.</p>
+            <p>Key Skills: <span class="highlight">Skill 1, Skill 2</span></p>
+          </div>
+        </div>
+        
+        <div class="project-container">
+          <img src="path-to-project2.jpg" alt="Project 2 Image" class="project-img" />
+          <div class="project-details">
+            <h3>Project 2</h3>
+            <p>Key Skills: <span class="highlight">Skill A, Skill B</span></p>
+          </div>
+        </div>
+
+        <!-- Empty templates for other projects -->
+        <div class="project-container">
+          <img src="path-to-empty-placeholder.jpg" alt="Project Image" class="project-img" />
+          <div class="project-details">
+            <h3>Project Template</h3>
+            <p>Key Skills: <span class="highlight">Skill X, Skill Y</span></p>
+          </div>
+        </div>
+
+        <!-- Repeat for all 9 projects -->
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+    <a href="/">Back to Home</a>  
+    <p>&copy; 2024 Vedant Labs. All Rights Reserved.</p>
+    </footer>
+  </body>
+</html>
+

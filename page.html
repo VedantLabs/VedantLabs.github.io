@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{meta_title}}</title>
+  <link rel="stylesheet" href="{{asset "css/style.css"}}">
+</head>
+<body>
+
+  <main>
+    <article class="page">
+      <h1>{{title}}</h1>
+      {{content}}
+    </article>
+  </main>
+
+  <script src="{{asset "js/script.js"}}"></script>
+</body>
+</html>
+
+{{#if @page.show_title_and_feature_image}}
+    <h1>{{title}}</h1>
+    {{#if feature_image}}
+        <img src="{{feature_image}}" alt="{{title}}">
+    {{/if}}
+{{/if}}

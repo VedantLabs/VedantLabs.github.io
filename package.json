@@ -1,0 +1,20 @@
+{
+  "name": "vedant-anand-theme",
+  "version": "1.0.0",
+  "description": "A custom portfolio theme for Vedant Anand",
+  "author": {
+    "name": "Vedant Anand",
+    "email": "vedant.muscat2@gmail.com"  
+  },
+  "config": {
+    "posts_per_page": 5
+  },
+  "engines": {
+    "ghost": ">=4.0.0"
+  }
+}
+
+
+
+  
+  

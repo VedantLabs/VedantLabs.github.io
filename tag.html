@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{meta_title}}</title>
+  <link rel="stylesheet" href="{{asset "css/style.css"}}">
+</head>
+<body>
+
+  <main>
+    <h1>{{tag.name}}</h1>
+    <div class="post-list">
+      {{#foreach posts}}
+        <article>
+          <h2><a href="{{url}}">{{title}}</a></h2>
+          <p>{{excerpt}}</p>
+        </article>
+      {{/foreach}}
+    </div>
+  </main>
+
+  <script src="{{asset "js/script.js"}}"></script>
+</body>
+</html>
+
